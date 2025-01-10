@@ -18,7 +18,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "PioneerDynamics\\AddressAutocomplete\\AddressAutocompletionServiceProvider"
+                "PioneerDynamics\\AddressAutocomplete\\Providers\\AddressAutocompletionServiceProvider"
             ]
         }
     }
