@@ -1,0 +1,25 @@
+{
+    "name": "pioneer-dynamics/address-autocomplete",
+    "description": "Auto complete addresses",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PioneerDynamics\\AddressAutocomplete\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mathew Paret",
+            "email": "mathewparet@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PioneerDynamics\\AddressAutocomplete\\AddressAutocompletionServiceProvider"
+            ]
+        }
+    }
+}
