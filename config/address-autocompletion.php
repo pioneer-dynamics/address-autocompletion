@@ -1,6 +1,7 @@
 <?php
 
 use PioneerDynamics\AddressAutocomplete\Services\AddressAutoCompletion\Radar;
+use PioneerDynamics\AddressAutocomplete\Services\AddressAutoCompletion\Google;
 use PioneerDynamics\AddressAutocomplete\Services\AddressAutoCompletion\Mapbox;
 
 return [
@@ -24,5 +25,12 @@ return [
             ]
         ],
         
+        'google' => [
+            'class' => Google::class,
+            'config' => [
+                'api_key' => env('ADDRESS_AUTOCOMPLETION_GOOGLE_API_KEY'),
+                'endpoint' => env('ADDRESS_AUTOCOMPLETION_GOOGLE_ENDPOINT', 'https://maps.googleapis.com/maps/api/place'),
+            ]
+        ],
     ],
 ];
