@@ -34,4 +34,15 @@ class Mapbox extends AddressAutoCompletionManager implements AddressAutoCompleti
             );
         }
     }
+
+    public function getAddressFromCoordinates($latitude, $longitude): array
+    {
+        $response = $this->client->get('/reverse', [
+            'longitude' => $longitude,
+            'latitude' => $latitude,
+            'access_token' => $this->config['api_key'],
+        ]);
+
+        return $response->json('features');
+    }
 }

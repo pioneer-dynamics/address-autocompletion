@@ -7,9 +7,9 @@ class Google extends AddressAutoCompletionManager implements AddressAutoCompleti
 {
     public function getSuggestions($address): array
     {
-        $response = $this->client->get('/autocomplete/json', [
+        $response = $this->client->get('/place/autocomplete/json', [
             'input' => $address,
-            'key' => config('address-autocompletion.providers.google.config.api_key'),
+            'key' => $this->config['api_key'],
             'types' => 'address',
         ]);
 
@@ -48,11 +48,21 @@ class Google extends AddressAutoCompletionManager implements AddressAutoCompleti
 
     private function getPlaceDetails($place_id): array
     {
-        $response = $this->client->get('/details/json', [
+        $response = $this->client->get('/place/details/json', [
             'place_id' => $place_id,
-            'key' => config('address-autocompletion.providers.google.config.api_key'),
+            'key' => $this->config['api_key'],
         ]);
 
         return $response->json('result');
+    }
+
+    public function getAddressFromCoordinates($latitude, $longitude): array
+    {
+        $response = $this->client->get('/geocode/json', [
+            'latlng' => $latitude . ',' . $longitude,
+            'key' => $this->config['api_key'],
+        ]);
+
+        return $response->json('results');
     }
 }
