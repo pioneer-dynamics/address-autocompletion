@@ -13,4 +13,6 @@ interface AddressAutoCompletionEngine
      * @return Collection<$latitude, $longitude, $country, $country_code, $number, $street, $state, $post_code>
      */
     public function getAddresses(): Collection;
+
+    public function reverseGeocode(float $latitude, float $longitude): self;
 }

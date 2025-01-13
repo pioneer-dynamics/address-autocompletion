@@ -32,6 +32,17 @@ abstract class AddressAutoCompletionManager implements AddressAutoCompletionEngi
         return $this;
     }
 
+    public function reverseGeocode(float $latitude, float $longitude): self
+    {
+        $suggestions = app()->call([$this, 'getAddressFromCoordinates'], ['latitude' => $latitude, 'longitude' => $longitude]);
+
+        $this->clearAddresses();
+
+        app()->call([$this, 'mapSuggestions'], ['suggestions' => $suggestions]);
+
+        return $this;
+    }
+
     public function initialize()
     {
         // placeholder

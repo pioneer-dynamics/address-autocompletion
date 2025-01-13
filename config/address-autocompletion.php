@@ -1,7 +1,7 @@
 <?php
 
-use PioneerDynamics\AddressAutocomplete\Services\AddressAutoCompletion\Radar;
 use PioneerDynamics\AddressAutocomplete\Services\AddressAutoCompletion\Google;
+use PioneerDynamics\AddressAutocomplete\Services\AddressAutoCompletion\Radar;
 use PioneerDynamics\AddressAutocomplete\Services\AddressAutoCompletion\Mapbox;
 
 return [
@@ -13,7 +13,7 @@ return [
             'class' => Radar::class,
             'config' => [
                 'api_key' => env('ADDRESS_AUTOCOMPLETION_RADAR_API_KEY'),
-                'endpoint' => env('ADDRESS_AUTOCOMPLETION_RADAR_ENDPOINT', 'https://api.radar.io/v1/search/autocomplete'),
+                'endpoint' => env('ADDRESS_AUTOCOMPLETION_RADAR_ENDPOINT', 'https://api.radar.io/v1'),
             ]
         ],
 
@@ -29,8 +29,9 @@ return [
             'class' => Google::class,
             'config' => [
                 'api_key' => env('ADDRESS_AUTOCOMPLETION_GOOGLE_API_KEY'),
-                'endpoint' => env('ADDRESS_AUTOCOMPLETION_GOOGLE_ENDPOINT', 'https://maps.googleapis.com/maps/api/place'),
+                'endpoint' => env('ADDRESS_AUTOCOMPLETION_GOOGLE_ENDPOINT', 'https://maps.googleapis.com/maps/api'),
             ]
         ],
+        
     ],
 ];

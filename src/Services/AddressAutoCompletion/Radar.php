@@ -12,7 +12,7 @@ class Radar extends AddressAutoCompletionManager implements AddressAutoCompletio
 
     public function getSuggestions($address): array
     {
-        $response = $this->client->get('', [
+        $response = $this->client->get('/search/autocomplete', [
             'query' => $address,
         ]);
 
@@ -35,5 +35,14 @@ class Radar extends AddressAutoCompletionManager implements AddressAutoCompletio
                 formatted_address: $address['formattedAddress'] ?? '',
             );
         }
+    }
+
+    public function getAddressFromCoordinates($latitude, $longitude): array
+    {
+        $response = $this->client->get('/geocode/reverse', [
+            'coordinates' => $latitude . ',' . $longitude,
+        ]);
+
+        return $response->json('addresses');
     }
 }
